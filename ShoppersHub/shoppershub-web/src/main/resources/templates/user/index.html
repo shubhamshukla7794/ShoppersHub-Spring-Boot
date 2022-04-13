@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoppershub User</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+<!--            <th>id</th>-->
+<!--            <th>customer_name</th>-->
+<!--            <th>username</th>-->
+<!--            <th>password</th>-->
+<!--            <th>email</th>-->
+<!--            <th>mobile</th>-->
+<!--            <th>cart</th>-->
+            <th>Label</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td th:text="${user.id}">id</td>
+        </tr>
+        <tr>
+            <td>customer_name</td>
+            <td th:text="${user.customerName}">Name</td>
+        </tr>
+        <tr>
+            <td>username</td>
+            <td th:text="${user.username}">username</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td th:text="${user.password}">password</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td th:text="${user.email}">email</td>
+        </tr>
+        <tr>
+            <td>mobile</td>
+            <td th:text="${user.mobile}">mob</td>
+        </tr>
+        <tr>
+            <td>cart</td>
+            <td th:text="${user.cart}">cart</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td th:each="addr : ${user.getAddresses()}">
+                <p th:text="${addr.house_info}">house</p>
+                <p th:text="${addr.area_info}">area</p>
+                <p th:text="${addr.city}">city</p>
+                <p th:text="${addr.state}">state</p>
+                <p th:text="${addr.pincode}">pincode</p>
+                <p th:text="${addr.addr_type}">type</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
