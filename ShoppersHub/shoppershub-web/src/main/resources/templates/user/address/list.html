@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th th:text="${addressList.get(1).getUser().getCustomerName()+' Addresses'}">Address</th>
+            </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="addr : ${addressList}">
+            <tr>
+                <td>
+                    <p th:text="${addr.house_info}">house</p>
+                    <p th:text="${addr.area_info}">area</p>
+                    <p th:if="${addr.landmark}!=null" th:text="${addr.landmark}">landmark</p>
+                    <p th:text="${addr.city}">city</p>
+                    <p th:text="${addr.state}">state</p>
+                    <p th:text="${addr.pincode}">pincode</p>
+                    <p th:text="${addr.addr_type}">type</p>
+                </td>
+                <td>
+                    <a th:href="@{'/user/'+ ${addr.getUser().getId()} + '/address/'+ ${addr.id} + '/update'}">Update</a>
+                </td>
+                <td>
+                    <a th:href="@{'/user/'+ ${addr.getUser().getId()} + '/address/'+ ${addr.id} + '/delete'}">Delete</a>
+                </td>
+            </tr>
+
+        </th:block>
+        </tbody>
+    </table>
+</body>
+</html>

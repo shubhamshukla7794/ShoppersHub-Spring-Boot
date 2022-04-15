@@ -56,4 +56,11 @@ public class User {
         this.email = email;
         this.mobile = mobile;
     }
+
+    public User addAddress(Address address) {
+        address.setUser(this);
+        this.addresses.add(address);
+        return this;
+    }
+
 }

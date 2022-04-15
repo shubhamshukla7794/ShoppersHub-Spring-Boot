@@ -18,8 +18,8 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "category_id")
-    private Long categoryId;
+//    @Column(name = "category_id")
+//    private Long categoryId;
 
     @Column(name = "price")
     private Float price;
@@ -36,4 +36,8 @@ public class Product {
 
     @Column(name = "added_date")
     private Date added_date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    private Category category;
 }

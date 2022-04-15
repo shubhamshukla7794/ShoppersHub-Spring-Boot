@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoppershub Register User</title>
+</head>
+<body>
+
+<form th:object="${address}" th:action="@{'/user/'+ ${address.getUser().getId()} +'/address'}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{user}"/>
+        <tbody>
+        <tr>
+            <td><label for="house_info" th:text="'House Details'">House Details</label></td>
+            <td><input id="house_info" type="text" th:field="*{house_info}" /></td>
+        </tr>
+        <tr>
+            <td><label for="area_info" th:text="'Area'">Area</label></td>
+            <td><input id="area_info" type="text" th:field="*{area_info}" /></td>
+        </tr>
+        <tr>
+            <td><label for="landmark" th:text="'Landmark'">Landmark</label></td>
+            <td><input id="landmark" type="text" th:field="*{landmark}" /></td>
+        </tr>
+        <tr>
+            <td><label for="city" th:text="'City'">City</label></td>
+            <td><input id="city" type="text" th:field="*{city}" /></td>
+        </tr>
+        <tr>
+            <td><label for="state" th:text="'State'">State</label></td>
+            <td><input id="state" type="text" th:field="*{state}" /></td>
+        </tr>
+        <tr>
+            <td><label for="pincode" th:text="'Pin Code'">Pincode</label></td>
+            <td><input id="pincode" type="text" th:field="*{pincode}" /></td>
+        </tr>
+        <tr>
+            <td><label for="addr_type" th:text="'Address Type'">Address Type</label></td>
+            <td>
+<!--                <span id="addr_type" th:field="*{addr_type}">-->
+                <th:block th:each="addtype : ${T(com.shubham.shoppershub.entity.AddrType).values()}" >
+                    <input type="radio" th:field="*{addr_type}" th:value="${addtype}" />
+                    <label th:for="${#ids.prev('addr_type')}" th:text="${addtype}">Addrs_type</label>
+                </th:block>
+            </span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="submit">Submit</button></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
