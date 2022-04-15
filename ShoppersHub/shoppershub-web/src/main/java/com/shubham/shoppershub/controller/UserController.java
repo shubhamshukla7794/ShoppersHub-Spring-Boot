@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -20,19 +21,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/user/show/{id}")
+    @RequestMapping("/show/{id}")
     public String showUserById(@PathVariable String id, Model model) {
         model.addAttribute("user", userService.getUserById(Long.valueOf(id)));
         return "user/index";
     }
 
-    @RequestMapping("user/register")
+    @RequestMapping("/register")
     public String newUser(Model model) {
         model.addAttribute("user", new User());
         return "user/register";
     }
 
-    @PostMapping("user")
+    @PostMapping("/save")
     public String saveOrUpdateUser(@ModelAttribute("user") User user) {
         User savedUser = userService.saveUser(user);
         return "redirect:/user/show/" + savedUser.getId();

@@ -52,12 +52,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByUsername(String username) {
+    public User getUserByEmail(String email) {
 
-        Optional<User> userOptional = Optional.ofNullable(userRepository.getUserByUsername(username));
+        Optional<User> userOptional = Optional.ofNullable(userRepository.getUserByEmail(email));
 
         if (userOptional.isEmpty()) {
-            throw new RuntimeException("User with " + username + " not found!!!");
+            throw new RuntimeException("User with " + email + " not found!!!");
         }
 
         User foundUser = userOptional.get();
@@ -73,7 +73,6 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User with " + id + " not found!!!");
         }
 
-        User foundUser = userOptional.get();
-        return foundUser;
+        return userOptional.get();
     }
 }

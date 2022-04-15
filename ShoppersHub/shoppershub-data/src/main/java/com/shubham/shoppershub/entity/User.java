@@ -19,16 +19,13 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "password")
     private String password;
 
-    @Column(name = "customer_name")
-    private String customerName;
+    @Column(name = "full_name")
+    private String fullName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "mobile_no")
@@ -49,10 +46,9 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String customerName, String email, String mobile) {
-        this.username = username;
+    public User(String password, String fullName, String email, String mobile) {
         this.password = password;
-        this.customerName = customerName;
+        this.fullName = fullName;
         this.email = email;
         this.mobile = mobile;
     }

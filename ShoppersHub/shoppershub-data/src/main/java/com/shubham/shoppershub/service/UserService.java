@@ -6,6 +6,6 @@ public interface UserService {
     public User saveUser(User user);
     public User saveAdminUser(User user);
     public void deleteUserById(long id);
-    public User getUserByUsername(String username);
+    public User getUserByEmail(String email);
     public User getUserById(long id);
 }

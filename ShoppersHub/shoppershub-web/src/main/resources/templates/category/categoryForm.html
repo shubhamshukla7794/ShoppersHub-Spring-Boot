@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+</head>
+<body>
+    <h1 th:text="'ShoppersHub Add Category Page'">ShoppersHub Add Category Page</h1>
+    <form th:object="${category}" th:action="@{'/admin/category/save'}" method="post">
+        <table>
+            <thead>
+            <tr>
+                <th>Label</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <input type="hidden" th:field="*{id}" />
+            <tbody>
+            <tr>
+                <td><label for="categoryName" th:text="'Category Name'">Category Name</label></td>
+                <td><input id="categoryName" type="text" th:field="*{categoryName}"/></td>
+            </tr>
+            <tr>
+                <td><label for="categoryDesc" th:text="'Category Description'">Category Description</label></td>
+                <td>
+                    <textarea id="categoryDesc" rows="5" cols="30" th:field="*{categoryDesc}"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Submit</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
