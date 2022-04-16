@@ -6,5 +6,47 @@
 </head>
 <body>
     <h1 th:text="'List of Products'">List of Products</h1>
+    <a th:href="@{'/admin/product/add'}">Add Product</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Product Price</th>
+            <th>Product Preview</th>
+            <th>Product Stock</th>
+            <th>Product Category</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="product : ${products}">
+            <tr>
+                <td>
+                    <p th:text="${product.productName}">Product Name</p>
+                </td>
+                <td>
+                    <p th:text="${product.productDesc}">Product Description</p>
+                </td>
+                <td>
+                    <p th:text="${product.price}">Product Price</p>
+                </td>
+                <td>
+                    <img src="" alt="Product Image" height="100px" width="100px" th:src="@{${'/productImages/' + product.imageName}}" />
+                </td>
+                <td>
+                    <p th:text="${product.stock}">Product Stock</p>
+                </td>
+                <td>
+                    <p th:text="${product.category.categoryName}">Product Category</p>
+                </td>
+                <td>
+                    <a th:href="@{'/admin/product/' + ${product.getId()} + '/update'}">Update</a> |
+                    <a th:href="@{'/admin/product/' + ${product.getId()} + '/delete'}">Delete</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -22,7 +22,7 @@ public class Product {
 //    private Long categoryId;
 
     @Column(name = "price")
-    private Float price;
+    private Double price;
 
     @Column(name = "stock")
     private Integer stock;
@@ -31,11 +31,11 @@ public class Product {
     @Column(name = "product_description")
     private String productDesc;
 
-    @Lob
-    private Byte[] image;
+//    @Lob
+//    private Byte[] image;
 
-    @Column(name = "added_date")
-    private Date added_date;
+    @Column(name = "product_image")
+    private String imageName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+</head>
+<body>
+<h1 th:text="'ShoppersHub Add Category Page'">ShoppersHub Add Category Page</h1>
+<form th:object="${product}" th:action="@{'/admin/product/save'}" method="post" enctype="multipart/form-data">
+    <table>
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <input type="hidden" th:field="*{id}" />
+        <tbody>
+        <tr>
+            <td><label for="productName" th:text="'Product Name'">Product Name</label></td>
+            <td><input id="productName" type="text" th:field="*{productName}"/></td>
+        </tr>
+        <tr>
+            <td><label for="productDesc" th:text="'Product Description'">Product Description</label></td>
+            <td>
+                <textarea id="productDesc" rows="5" cols="30" th:field="*{productDesc}"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="price" th:text="'Product Price'">Product Price</label></td>
+            <td><input id="price" type="text" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td><label for="stock" th:text="'Product Stock'">Product Stock</label></td>
+            <td><input id="stock" type="text" th:field="*{stock}"/></td>
+        </tr>
+        <tr>
+            <td><label for="category" th:text="'Product Name'">Product Category</label></td>
+            <td>
+                <select name="category.id" id="category">
+                    <option th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:selected="${category.id.equals(product.category.id)}"
+                            th:text="${category.categoryName}">Category</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="productImage" th:text="'Product Name'">Product Category</label></td>
+            <td><input type="file" name="productImage" id="productImage" accept="image/jpeg, image/png"/></td>
+            <td><input type="hidden" name="imageName" th:value="${product.imageName}"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="submit">Submit</button></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
