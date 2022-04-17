@@ -6,6 +6,7 @@ import com.shubham.shoppershub.service.CategoryService;
 import com.shubham.shoppershub.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,8 +24,9 @@ public class ProductController {
     
     private final ProductService productService;
     private final CategoryService categoryService;
-    private final String uploadDir = System.getProperty("user.dir")
-            + "/shoppershub-web/src/main/resources/static/productImages";
+//    private final String uploadDir = System.getProperty("user.dir")
+//            + "/shoppershub-web/src/main/resources/static/productImages";
+    private final String uploadDir = "./shoppershub-web/src/main/resources/static/productImages";
 
     public ProductController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
@@ -51,9 +53,13 @@ public class ProductController {
                               @RequestParam("productImage")MultipartFile file,
                               @RequestParam("imageName") String imageName) throws IOException {
 
-        String imageUUID;
+        String imageUUID, temp, extension;
         if (!file.isEmpty()) {
-            imageUUID = file.getOriginalFilename();
+            temp = StringUtils.cleanPath(file.getOriginalFilename());
+            extension = StringUtils.getFilenameExtension(temp);
+//            imageUUID = file.getOriginalFilename();
+            imageUUID = product.getProductName().replaceAll("[#%&{}$!\'\":@\\<>|*?/=`+]", "")
+                            +"." + extension;
             Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
             Files.write(fileNameAndPath, file.getBytes());
         } else {

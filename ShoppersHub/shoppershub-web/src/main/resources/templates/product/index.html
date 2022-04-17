@@ -29,10 +29,12 @@
                     <p th:text="${product.productDesc}">Product Description</p>
                 </td>
                 <td>
-                    <p th:text="${product.price}">Product Price</p>
+<!--                    <p th:text="${product.price}">Product Price</p>-->
+                    <p th:utext="${'&#8377; '+ #numbers.formatDecimal(product.price,3,'COMMA',2,'POINT')}">Product Price</p>
                 </td>
                 <td>
-                    <img src="" alt="Product Image" height="100px" width="100px" th:src="@{${'/productImages/' + product.imageName}}" />
+                    <img src="" alt="Product Image" width="100px" th:src="@{${'/product/' + product.getId() + '/productImage'}}" />
+<!--                    <img src="" alt="Product Image" width="100px" th:src="@{${'/productImages/' + product.imageName}}" />-->
                 </td>
                 <td>
                     <p th:text="${product.stock}">Product Stock</p>
