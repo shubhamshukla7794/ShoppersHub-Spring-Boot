@@ -79,4 +79,10 @@ public class ProductController {
         return "product/productForm";
     }
 
+    @GetMapping("/{productId}/delete")
+    public String deleteProduct(@PathVariable String productId) {
+        productService.deleteProductById(Long.valueOf(productId));
+        return "redirect:/admin/product";
+    }
+
 }
