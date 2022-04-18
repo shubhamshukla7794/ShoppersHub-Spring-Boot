@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ShoppersHub Products</title>
+</head>
+<body>
+
+<h1 th:text="${products.get(0).getCategory().getCategoryName()}">List of Products</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Preview</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="product : ${products}">
+        <tr>
+            <td>
+                <p th:text="${product.productName}">Product Name</p>
+            </td>
+            <td>
+                <p th:utext="${'&#8377; '+ #numbers.formatDecimal(product.price,3,'COMMA',2,'POINT')}">Product Price</p>
+            </td>
+            <td>
+                <img src="" alt="Product Image" width="100px" th:src="@{${'/product/' + product.getId() + '/productImage'}}" />
+            </td>
+            <td>
+                <a th:href="@{'/shop/viewproduct/' + ${product.getId()}}">View Product</a>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
