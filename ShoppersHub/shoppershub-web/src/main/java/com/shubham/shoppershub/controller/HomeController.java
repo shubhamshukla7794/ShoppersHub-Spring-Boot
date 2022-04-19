@@ -34,6 +34,7 @@ public class HomeController {
 
     @GetMapping("/shop/viewproduct/{productId}")
     public String viewProductDetails(@PathVariable Long productId, Model model) {
+        model.addAttribute("categories", categoryService.findAllCategories());
         model.addAttribute("product", productService.findProductById(productId));
         return "product/viewProduct";
     }

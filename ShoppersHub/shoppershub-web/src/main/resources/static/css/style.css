@@ -1,0 +1,194 @@
+body{
+    padding-top: 66px;
+}
+
+.navbar a.navbar-brand{
+    background: url("../images/shoppershublogo.png") center/ contain no-repeat;
+    width: 230px;
+    height: 50px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.bg-custom {
+    background-color: #003F63;
+}
+
+.bg-subnav{
+    background-color: #ADE1FF;
+}
+
+.nav-home {
+    color: #e7e7e7 !important;
+    padding: 0.5em 2em !important;
+    font-size: 1em;
+    cursor: pointer;
+    color: #434343;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.nav-home:hover {
+    color: #bababa !important;
+}
+
+.nav-anchor {
+    border: 2px solid black;
+    border-radius: 5px;
+    color: #e7e7e7 !important;
+    padding: 0.5em 2em !important;
+    font-size: 1em;
+    cursor: pointer;
+    border-color: #e7e7e7;
+    color: #434343;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.nav-anchor:hover {
+    color: #343434 !important;
+    background: #e7e7e7;
+}
+
+.sub-nav-link{
+    display: block;
+    padding: .5rem 2rem;
+    color: #012d47;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.product-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.product-image {
+    max-height: 20em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 50%;*/
+}
+
+.product-price {
+    font-weight: bold;
+    padding: 0.5em 0;
+}
+
+.product-description {
+    font-size: 1.2em;
+    text-align: justify;
+    padding: 0.5em 0;
+}
+
+.product-link:hover .product-price{
+    color: #000;
+}
+
+.view-product {
+    padding-top: 15vh;
+}
+
+.icons {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+}
+
+.cart-btn{
+    /*border: 2px solid black;*/
+    border-radius: 5px;
+    background-color: #0D6EFD;
+    color: #E5E5E5;
+    padding: 14px 28px;
+    font-size: 16px;
+    width: 20em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cart-btn:hover {
+    color: #E5E5E5;
+    background-color: #0A58CA;
+}
+
+.btn-pill {
+    border-radius: 25px;
+    background-color: #0D6EFD;
+    color: #E5E5E5;
+    padding: 14px 18px;
+    font-size: 16px;
+    width: 20em;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+.btn-pill:hover {
+    color: #E5E5E5;
+    background-color: #0A58CA;
+}
+
+.jumbotron {
+    padding: 5rem 10rem;
+    margin-bottom: 2rem;
+    background-color: #BCCBE1;
+    text-align: center;
+}
+
+.jumbo-heading {
+    font-size: 4.5em;
+}
+
+.jumbo-para {
+    font-size: 1.5em;
+}
+
+.mgmt-section {
+    border: 2px solid rgba(67, 67, 67, 0.5);
+    border-radius: 5px;
+    padding: 1em;
+}
+
+.mgmt-heading {
+    font-size: 2.2em;
+}
+
+.mgmt-heading-name {
+    font-size: 2.2em;
+    padding: 2em 0;
+}
+
+.mgmt-para-label {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.mgmt-para {
+    font-size: 1.25em;
+}
+
+.profile-container {
+    margin-top: 5em;
+    background-color: #BCCBE1;
+    border-radius: 10px;
+    padding: 5em 0;
+}
+
+.form-container {
+    margin-top: 5em;
+    background-color: #BCCBE1;
+    border-radius: 10px;
+    padding: 5em;
+}
+
+.form-heading {
+    /*padding-bottom: 2em;*/
+    text-transform: uppercase;
+}
+
+.form-label {
+    font-size: 1.1em;
+    font-weight: bold;
+}

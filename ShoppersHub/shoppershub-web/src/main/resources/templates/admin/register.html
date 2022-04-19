@@ -3,40 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Shoppershub Register User</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/svgs/faviconcart.svg" sizes="any" type="image/svg+xml">
 </head>
 <body>
-
-<form th:object="${admin}" th:action="@{/admin/save}" method="post">
-    <table>
-        <thead>
-        <tr>
-            <th>Label</th>
-            <th>Details</th>
-        </tr>
-        </thead>
+<nav class="navbar fixed-top navbar-expand-lg bg-custom navbar-dark py-2">
+    <div class="container">
+        <a href="#" th:href="@{/}" class="navbar-brand"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="#" th:href="@{'/admin/home/'+ ${admin.id}}" class="nav-link nav-home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" th:href="@{'/admin/profile/'+ ${admin.id}}" class="nav-link nav-home">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" th:href="@{'/logout'}" class="nav-link nav-anchor">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container form-container">
+    <h1 th:text="${msg}" class="form-heading">Register</h1>
+    <hr />
+    <br />
+    <form th:object="${admin}" th:action="@{/admin/save}" method="post">
         <input type="hidden" th:field="*{id}"/>
-        <tbody>
-        <tr>
-            <td><label for="fullName" th:text="'Full Name'">Full Name</label></td>
-            <td><input id="fullName" type="text" th:field="*{fullName}" /></td>
-        </tr>
-        <tr>
-            <td><label for="password" th:text="'Password'">Password</label></td>
-            <td><input id="password" type="password" th:field="*{password}" /></td>
-        </tr>
-        <tr>
-            <td><label for="email" th:text="'Email'">Email</label></td>
-            <td><input id="email" type="email" th:field="*{email}" /></td>
-        </tr>
-        <tr>
-            <td><label for="mobile" th:text="'Mobile'">Mobile</label></td>
-            <td><input id="mobile" type="text" th:field="*{mobile}" /></td>
-        </tr>
-        <tr>
-            <td colspan="2"><button type="submit">Submit</button></td>
-        </tr>
-        </tbody>
-    </table>
-</form>
+        <div class="mb-3">
+            <label for="fullName" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/admin.svg#admin" /></svg></span> Full Name</label>
+            <input id="fullName" type="text" th:field="*{fullName}" class="form-control" />
+        </div>
+        <th:block th:if="${admin.id} == null">
+            <div class="mb-3">
+                <label for="password" class="form-label"><svg class="icons"><use xlink:href="/svgs/lock.svg#lock" /></svg></span>  Password</label>
+                <input id="password" type="password" th:field="*{password}" class="form-control" />
+            </div>
+        </th:block>
+        <th:block th:unless="${admin.id} == null">
+            <input type="hidden" th:field="*{password}"/>
+        </th:block>
+        <div class="mb-3">
+            <label for="email" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/mail.svg#mail" /></svg></span> Email</label>
+            <input id="email" type="email" th:field="*{email}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="mobile" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/phone.svg#phone" /></svg></span> Mobile</label>
+            <input id="mobile" type="text" th:field="*{mobile}" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary"><span><svg class="icons"><use xlink:href="/svgs/paperPlane.svg#paperPlane" /></svg></span> Submit</button>
+    </form>
+</div>
 </body>
 </html>
