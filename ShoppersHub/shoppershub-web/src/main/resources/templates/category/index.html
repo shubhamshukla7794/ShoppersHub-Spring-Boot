@@ -33,12 +33,14 @@
 </div>
 <div class="container">
     <a class="btn btn-primary" th:href="@{'/admin/'+ ${admin.id} +'/category/add'}"><svg class="icons"><use xlink:href="/svgs/categories.svg#categories" /></svg> Add Category</a>
+    <br />
+    <br />
     <table class="table table-striped table-hover">
-        <thead>
+        <thead class="table-dark">
         <tr>
             <th>Category Name</th>
             <th>Category Description</th>
-            <th>Actions</th>
+            <th class="align-action">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -50,7 +52,7 @@
                 <td>
                     <p th:text="${category.categoryDesc}">Category Description</p>
                 </td>
-                <td>
+                <td class="w-20">
                     <a class="btn btn-warning" th:href="@{'/admin/'+ ${admin.id} +'/category/' + ${category.getId()} + '/update'}"><svg class="icons"><use xlink:href="/svgs/pencil.svg#pencil" /></svg> Update</a>
                     <a class="btn btn-danger" th:href="@{'/admin/'+ ${admin.id} +'/category/' + ${category.getId()} + '/delete'}"><svg class="icons"><use xlink:href="/svgs/trash.svg#trash" /></svg> Delete</a>
                 </td>

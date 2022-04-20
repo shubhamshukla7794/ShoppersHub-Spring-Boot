@@ -10,4 +10,5 @@ public interface ProductService {
     public void deleteProductById(Long id);
     public List<Product> getAllProductsByCategoryId(Long categoryId);
     public Product findProductById(Long id);
+    public List<Product> findRandomProducts();
 }

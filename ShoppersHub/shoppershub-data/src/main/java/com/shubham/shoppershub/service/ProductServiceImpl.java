@@ -48,4 +48,9 @@ public class ProductServiceImpl implements ProductService {
 
         return productOptional.get();
     }
+
+    @Override
+    public List<Product> findRandomProducts() {
+        return productRepository.findRandomProducts();
+    }
 }

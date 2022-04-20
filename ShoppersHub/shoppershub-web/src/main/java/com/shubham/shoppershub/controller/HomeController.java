@@ -22,6 +22,7 @@ public class HomeController {
     @RequestMapping({"","/","index","index.html"})
     public String index(Model model) {
         model.addAttribute("categories", categoryService.findAllCategories());
+        model.addAttribute("products", productService.findRandomProducts());
         return "index";
     }
 

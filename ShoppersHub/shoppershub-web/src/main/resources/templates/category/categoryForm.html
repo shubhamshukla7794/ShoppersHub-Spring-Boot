@@ -35,11 +35,11 @@
     <form th:object="${category}" th:action="@{'/admin/'+ ${admin.id} +'/category/save'}" method="post">
         <input type="hidden" th:field="*{id}" />
         <div class="mb-3">
-            <label for="categoryName" th:text="'Category Name'" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/categories.svg#categories" /></svg></span> Category Name</label>
+            <label for="categoryName" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/categories.svg#categories" /></svg></span> Category Name</label>
             <input id="categoryName" type="text" th:field="*{categoryName}" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="categoryDesc" th:text="'Category Description'" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/categories.svg#categories" /></svg></span> Category Description</label>
+            <label for="categoryDesc" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/description.svg#description" /></svg></span> Category Description</label>
             <input id="categoryDesc" type="text" th:field="*{categoryDesc}" class="form-control" />
         </div>
         <button type="submit" class="btn btn-lg btn-primary"><span><svg class="icons"><use xlink:href="/svgs/paperPlane.svg#paperPlane" /></svg></span> Submit</button>

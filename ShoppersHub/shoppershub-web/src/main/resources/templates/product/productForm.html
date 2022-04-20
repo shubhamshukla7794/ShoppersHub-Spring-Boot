@@ -3,58 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Product</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/svgs/faviconcart.svg" sizes="any" type="image/svg+xml">
 </head>
 <body>
-<h1 th:text="'ShoppersHub Add Category Page'">ShoppersHub Add Category Page</h1>
-<form th:object="${product}" th:action="@{'/admin/product/save'}" method="post" enctype="multipart/form-data">
-    <table>
-        <thead>
-        <tr>
-            <th>Label</th>
-            <th>Details</th>
-        </tr>
-        </thead>
+<nav class="navbar fixed-top navbar-expand-lg bg-custom navbar-dark py-2">
+    <div class="container">
+        <a href="#" th:href="@{/}" class="navbar-brand"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="#" th:href="@{'/admin/home/'+ ${admin.id}}" class="nav-link nav-home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" th:href="@{'/admin/profile/'+ ${admin.id}}" class="nav-link nav-home">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" th:href="@{'/logout'}" class="nav-link nav-anchor">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container form-container">
+    <h1 th:text="${msg}">ShoppersHub Add Product Page</h1>
+    <hr />
+    <br />
+    <form th:object="${product}" th:action="@{'/admin/'+ ${admin.id} +'/product/save'}" method="post" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}" />
-        <tbody>
-        <tr>
-            <td><label for="productName" th:text="'Product Name'">Product Name</label></td>
-            <td><input id="productName" type="text" th:field="*{productName}"/></td>
-        </tr>
-        <tr>
-            <td><label for="productDesc" th:text="'Product Description'">Product Description</label></td>
-            <td>
-                <textarea id="productDesc" rows="5" cols="30" th:field="*{productDesc}"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="price" th:text="'Product Price'">Product Price</label></td>
-            <td><input id="price" type="text" th:field="*{price}"/></td>
-        </tr>
-        <tr>
-            <td><label for="stock" th:text="'Product Stock'">Product Stock</label></td>
-            <td><input id="stock" type="text" th:field="*{stock}"/></td>
-        </tr>
-        <tr>
-            <td><label for="category" th:text="'Product Name'">Product Category</label></td>
-            <td>
-                <select name="category.id" id="category">
-                    <option th:each="category : ${categories}"
-                            th:value="${category.id}"
-                            th:selected="${category.id.equals(product.category.id)}"
-                            th:text="${category.categoryName}">Category</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="productImage" th:text="'Product Name'">Product Category</label></td>
-            <td><input type="file" name="productImage" id="productImage" accept="image/jpeg, image/png"/></td>
-            <td><input type="hidden" name="imageName" th:value="${product.imageName}"/></td>
-        </tr>
-        <tr>
-            <td colspan="2"><button type="submit">Submit</button></td>
-        </tr>
-        </tbody>
-    </table>
-</form>
+        <div class="mb-3">
+            <label for="productName" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/products.svg#products" /></svg></span> Product Name</label>
+            <input id="productName" type="text" th:field="*{productName}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="productDesc" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/description.svg#description" /></svg></span> Product Description</label>
+            <textarea id="productDesc" type="text" th:field="*{productDesc}" rows="5" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/rupee.svg#rupee" /></svg></span> Product Price</label>
+            <input id="price" type="text" th:field="*{price}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="stock" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/stock.svg#stock" /></svg></span> Product Stocks</label>
+            <input id="stock" type="text" th:field="*{stock}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/categories.svg#categories" /></svg></span> Product Category</label>
+            <select name="category.id" id="category" class="form-select">
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:selected="${category.id.equals(product.category.id)}"
+                        th:text="${category.categoryName}">Category</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="productImage" class="form-label"><span><svg class="icons"><use xlink:href="/svgs/image.svg#image" /></svg></span> Product Image</label>
+            <input type="file" name="productImage" id="productImage" accept="image/jpeg, image/png" class="form-control" />
+            <input type="hidden" name="imageName" th:value="${product.imageName}"/>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary"><span><svg class="icons"><use xlink:href="/svgs/paperPlane.svg#paperPlane" /></svg></span> Submit</button>
+<!--        <table>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Label</th>-->
+<!--                <th>Details</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+
+<!--            <tbody>-->
+<!--            <tr>-->
+<!--                <td><label for="productName" th:text="'Product Name'">Product Name</label></td>-->
+<!--                <td><input id="productName" type="text" th:field="*{productName}"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label for="productDesc" th:text="'Product Description'">Product Description</label></td>-->
+<!--                <td>-->
+<!--                    <textarea id="productDesc" rows="5" cols="30" th:field="*{productDesc}"></textarea>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label for="price" th:text="'Product Price'">Product Price</label></td>-->
+<!--                <td><input id="price" type="text" th:field="*{price}"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label for="stock" th:text="'Product Stock'">Product Stock</label></td>-->
+<!--                <td><input id="stock" type="text" th:field="*{stock}"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label for="category" th:text="'Product Name'">Product Category</label></td>-->
+<!--                <td>-->
+<!--                    <select name="category.id" id="category">-->
+<!--                        <option th:each="category : ${categories}"-->
+<!--                                th:value="${category.id}"-->
+<!--                                th:selected="${category.id.equals(product.category.id)}"-->
+<!--                                th:text="${category.categoryName}">Category</option>-->
+<!--                    </select>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label for="productImage" th:text="'Product Name'">Product Category</label></td>-->
+<!--                <td><input type="file" name="productImage" id="productImage" accept="image/jpeg, image/png"/></td>-->
+<!--                <td><input type="hidden" name="imageName" th:value="${product.imageName}"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td colspan="2"><button type="submit">Submit</button></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+    </form>
+</div>
 </body>
 </html>

@@ -32,6 +32,13 @@
     </ul>
 </div>
 <div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a th:href="@{'/shop/category/'+ ${product.category.id}}" th:text="${product.category.categoryName}">Category</a></li>
+            <li class="breadcrumb-item active" aria-current="page" th:text="${product.productName}">Product</li>
+        </ol>
+    </nav>
     <div class="row view-product">
         <div class="col-lg-4">
             <img src="" class="product-image" th:alt="${product.productName}"
@@ -39,7 +46,7 @@
         </div>
         <div class="col-lg-7 offset-lg-1">
             <h3 th:text="${product.getProductName()}">Name</h3>
-            <h3 class="product-price" th:utext="${'&#8377; '+ #numbers.formatDecimal(product.price,3,'COMMA',2,'POINT')}">Product Price</h3>
+            <h3 class="product-price" th:utext="${'&#8377;'+ #numbers.formatDecimal(product.price,3,'COMMA',2,'POINT')}">Product Price</h3>
             <h4>Product Description</h4>
             <p class="product-description" th:text="${product.productDesc}">Product Description</p>
             <a href="#" class="cart-btn"><svg class="icons"><use xlink:href="/svgs/cart.svg#cart" /></svg> Add to Cart</a>

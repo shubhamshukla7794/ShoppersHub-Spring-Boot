@@ -73,7 +73,7 @@ body{
 
 .product-price {
     font-weight: bold;
-    padding: 0.5em 0;
+    padding-bottom: 0.5em;
 }
 
 .product-description {
@@ -84,6 +84,11 @@ body{
 
 .product-link:hover .product-price{
     color: #000;
+}
+
+.product-col {
+    padding: 1em;
+    margin-bottom: 1em;
 }
 
 .view-product {
@@ -191,4 +196,25 @@ body{
 .form-label {
     font-size: 1.1em;
     font-weight: bold;
+}
+
+.w-20 {
+    width: 20% !important;
+}
+
+.w-12 {
+    width: 12% !important;
+}
+
+.impt-col {
+    font-weight: bold;
+}
+
+.desc-col {
+    text-align: justify;
+}
+
+.align-action {
+    text-align: center;
+    /*display: block;*/
 }

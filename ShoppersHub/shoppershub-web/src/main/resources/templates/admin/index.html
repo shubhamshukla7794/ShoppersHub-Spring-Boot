@@ -42,7 +42,7 @@
         <div class="col-lg-5 offset-lg-2 mgmt-section">
             <h4 class="mgmt-heading">Products</h4>
             <p class="mgmt-para">Manage the Product Section here.</p>
-            <a class="btn btn-primary btn-lg" th:href="@{'/admin/product'}"><svg class="icons"><use xlink:href="/svgs/products.svg#products" /></svg> Manage Products</a>
+            <a class="btn btn-primary btn-lg" th:href="@{'/admin/'+ ${admin.id} +'/product'}"><svg class="icons"><use xlink:href="/svgs/products.svg#products" /></svg> Manage Products</a>
         </div>
     </div>
 </div>
